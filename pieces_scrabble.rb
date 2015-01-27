@@ -3,8 +3,8 @@ require "minitest/autorun"
 require 'pry'
 
 def possible_words letter
-    possbilities=[]
-    combinations = letter.permutation.to_a
+    possibilities=[]
+    combinations = letter.permutation.to_a + letter.permutation(2).to_a + letter.permutation(1).to_a
     combinations.each  do  |x|
     	possibilities.push(x.join)
     end
@@ -12,7 +12,7 @@ def possible_words letter
 end
 
 def word_finder
-    dictionary = ["cat", "at", "bat", "act"]
+    dictionary = ["cat", "at", "bat", "act", "a", "ta"]
     possible_words.each do |x|
 	 dictionary.include?(x)
 	 puts x
