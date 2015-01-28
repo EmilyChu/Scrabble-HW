@@ -2,7 +2,9 @@
 require "minitest/autorun"
 require 'pry'
 
-def possible_words letters
+#assumes finding all words from set of 3-letter-set
+
+def possible_words letter
     possibilities = []
     combinations = letter.permutation.to_a + letter.permutation(2).to_a + letter.permutation(1).to_a
     combinations.each  do  |x|
@@ -23,10 +25,9 @@ def word_finder
 end
 
 class TestScrabble < Minitest::Test
-  letters = ["c", "a", "t"]
-  
+  letter = ["c", "a", "t"]
+
   def test_is_string
-  possible_words()
   word_finder.each.class == String
   end
 
@@ -38,4 +39,6 @@ end
  end
   	
   	match_str make_word(["c", "a", "t"]), "cat"
+
+  	Is this a better is_string? test:  .respond_to?(:to_s)
 =end
