@@ -14,18 +14,20 @@ File.open("/usr/share/dict/words").each_line do |line|
   end
 end
 
-# Dictionary = []
-# File.open("/usr/share/dict/words").each_line do |line|
-#   line.chomp! # remove \n from line
-#   if line.length >= 2 && line.length <= 7
-#     line.capitalize!
-#       if line.capitalize! == "nil"
-#         # line.delete
-#       else line.downcase
-#     end
-#     Dictionary.push line
-#   end
-# end
+Dictionary = []
+File.open("/usr/share/dict/words").each_line do |line|
+  line.chomp! # remove \n from line
+  if line.length >= 2 && line.length <= 7
+    if line.capitalize! == nil # then the line was already capitalized
+      # skip the rest of this and go on to the next line
+      next
+    else
+      # need to convert back
+      line.downcase!
+    end
+    Dictionary.push line
+  end
+end
 
 def possible_words letters
   possibilities = []
