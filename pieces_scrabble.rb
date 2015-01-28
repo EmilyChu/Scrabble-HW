@@ -2,8 +2,8 @@
 require "minitest/autorun"
 require 'pry'
 
-def possible_words letter
-    possibilities=[]
+def possible_words letters
+    possibilities = []
     combinations = letter.permutation.to_a + letter.permutation(2).to_a + letter.permutation(1).to_a
     combinations.each  do  |x|
     	possibilities.push(x.join)
@@ -13,15 +13,23 @@ end
 
 def word_finder
     dictionary = ["cat", "at", "bat", "act", "a", "ta"]
+    results = []
     possible_words.each do |x|
-	 dictionary.include?(x)
-	 puts x
+	if dictionary.include?(x)
+		results.push(x)
+	end
     end
+    return results
 end
 
 class TestScrabble < Minitest::Test
+  letters = ["c", "a", "t"]
+  
   def test_is_string
-  	assert true, word_finder(["c", "a", "t"]).is_a(String)
+  possible_words()
+  word_finder.each.class == String
+  end
+
 end
 =begin
   def test_make_word
