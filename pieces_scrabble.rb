@@ -13,7 +13,7 @@ def possible_words letter
     return possibilities
 end
 
-def word_finder
+def word_finder letter
     dictionary = ["cat", "at", "bat", "act", "a", "ta"]
     results = []
     possible_words.each do |x|
